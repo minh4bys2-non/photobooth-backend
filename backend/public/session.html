@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photobooth – Xem & Tải Ảnh</title>
+    <meta name="description" content="Xem và tải ảnh photobooth của bạn">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- ── Loading ────────────────────────────────────────── -->
+    <div id="loading" class="screen">
+        <div class="loader-ring"></div>
+        <p class="loader-text">Đang tải ảnh của bạn...</p>
+    </div>
+
+    <!-- ── Error ──────────────────────────────────────────── -->
+    <div id="error" class="screen hidden">
+        <div class="error-icon">📸</div>
+        <h1 class="error-title">Oops!</h1>
+        <p id="error-message" class="error-text">Session không tồn tại hoặc đã hết hạn.</p>
+        <p class="error-hint">Ảnh chỉ được lưu trong 7 ngày.</p>
+    </div>
+
+    <!-- ── Gallery ────────────────────────────────────────── -->
+    <div id="gallery" class="screen hidden">
+        <header class="header">
+            <div class="header-glow"></div>
+            <h1 class="header-title">📸 Ảnh Của Bạn</h1>
+            <p class="header-sub" id="session-info"></p>
+        </header>
+
+        <main class="gallery-grid" id="gallery-grid">
+            <!-- Ảnh/video inject bởi JS -->
+        </main>
+
+        <div class="download-all-bar" id="download-bar">
+            <button class="btn-download-all" id="btn-download-all">
+                ⬇️ Tải tất cả
+            </button>
+        </div>
+
+        <footer class="footer">
+            <p>Ảnh có hiệu lực đến <span id="expiry-date"></span></p>
+        </footer>
+    </div>
+
+    <!-- ── Lightbox (xem ảnh phóng to) ────────────────────── -->
+    <div id="lightbox" class="lightbox hidden" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="Phóng to">
+        <a id="lightbox-download" class="lightbox-download-btn" download>⬇️ Tải ảnh này</a>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

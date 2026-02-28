@@ -1,0 +1,29 @@
+{
+    "name": "booth-agent",
+    "version": "1.0.0",
+    "description": "DSLR Photobooth Booth Agent – watches output folder, uploads to backend, generates QR codes",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "node --watch src/index.js"
+    },
+    "keywords": [
+        "photobooth",
+        "dslr",
+        "booth-agent",
+        "qr"
+    ],
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "axios": "^1.7.0",
+        "chokidar": "^3.6.0",
+        "dotenv": "^16.4.0",
+        "form-data": "^4.0.0",
+        "qrcode": "^1.5.3",
+        "sharp": "^0.34.5",
+        "uuid": "^9.0.1",
+        "winston": "^3.13.0",
+        "winston-daily-rotate-file": "^5.0.0"
+    }
+}

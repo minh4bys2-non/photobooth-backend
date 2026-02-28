@@ -1,0 +1,27 @@
+{
+    "name": "photobooth-backend",
+    "version": "1.0.0",
+    "description": "Backend API cho hệ thống DSLR Photobooth – quản lý session, upload ảnh/video lên Cloudinary",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "node --watch src/index.js"
+    },
+    "keywords": [
+        "photobooth",
+        "backend",
+        "cloudinary",
+        "mongodb"
+    ],
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "cloudinary": "^2.5.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.0",
+        "express": "^4.21.0",
+        "mongoose": "^8.8.0",
+        "multer": "^1.4.5-lts.1",
+        "uuid": "^9.0.1"
+    }
+}
