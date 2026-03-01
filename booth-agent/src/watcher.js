@@ -50,7 +50,7 @@ function startWatcher(onNewFile) {
 
     const watcher = chokidar.watch(watchDir, {
         persistent: true,
-        ignoreInitial: false,          // xử lý cả file đã có sẵn
+        ignoreInitial: true,           // chỉ xử lý file MỚI (tránh upload lại file cũ mỗi lần restart)
         awaitWriteFinish: false,       // tự kiểm tra ổn định
         usePolling: false,
         depth: 0,                      // chỉ file ở cấp thư mục gốc

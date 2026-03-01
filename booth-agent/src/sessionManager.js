@@ -5,6 +5,7 @@
 
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
+const fs = require('fs');
 const config = require('./config');
 const logger = require('./logger');
 
@@ -17,8 +18,30 @@ const TYPE_MAP = {
     '.mp4': 'video',
 };
 
-// ── Theo dõi file đã xử lý (Set chứa đường dẫn tuyệt đối) ─
-const processedFiles = new Set();
+// ── Theo dõi file đã xử lý (lưu ra file JSON để persist qua restart) ─
+const PROCESSED_FILE = path.join(config.QUEUE_DIR, 'processed.json');
+
+function loadProcessedFiles() {
+    try {
+        if (!fs.existsSync(PROCESSED_FILE)) return new Set();
+        const raw = fs.readFileSync(PROCESSED_FILE, 'utf-8');
+        return new Set(JSON.parse(raw));
+    } catch {
+        logger.warn('Không thể đọc processed.json – reset về rỗng');
+        return new Set();
+    }
+}
+
+function saveProcessedFiles() {
+    try {
+        fs.mkdirSync(config.QUEUE_DIR, { recursive: true });
+        fs.writeFileSync(PROCESSED_FILE, JSON.stringify([...processedFiles]), 'utf-8');
+    } catch (err) {
+        logger.error(`Không thể lưu processed.json: ${err.message}`);
+    }
+}
+
+const processedFiles = loadProcessedFiles();
 
 // ── Trạng thái nhóm session theo cửa sổ thời gian ──────────
 let currentSessionId = null;
@@ -96,10 +119,12 @@ function isDuplicate(filePath) {
 
 /**
  * Đánh dấu file đã xử lý để không upload lại.
+ * Lưu ra file JSON để persist qua restart.
  * @param {string} filePath  Đường dẫn tuyệt đối
  */
 function markProcessed(filePath) {
     processedFiles.add(path.resolve(filePath));
+    saveProcessedFiles();
 }
 
 module.exports = {

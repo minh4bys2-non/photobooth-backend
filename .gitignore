@@ -9,7 +9,7 @@ backend/tmp/
 
 # Booth Agent generated files
 booth-agent/logs/
-booth-agent/queue/queue.json
+booth-agent/queue/
 booth-agent/qrcodes/
 booth-agent/print/
 
