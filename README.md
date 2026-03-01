@@ -1,4 +1,4 @@
-# 📸 DSLR Photobooth – Web QR System
+# DSLR Photobooth – Web QR System
 
 Hệ thống photobooth gồm 2 thành phần chính:
 
@@ -7,7 +7,7 @@ Hệ thống photobooth gồm 2 thành phần chính:
 | `backend/` | API server (Express + MongoDB + Cloudinary) + Frontend gallery |
 | `booth-agent/` | Agent chạy trên máy booth (watch folder → upload → tạo QR → in) |
 
-## 🚀 Cài đặt sau khi clone
+## Cài đặt sau khi clone
 
 ### 1. Clone repo
 
@@ -56,7 +56,7 @@ cd booth-agent
 npm run dev
 ```
 
-## 📁 Cấu trúc thư mục
+## Cấu trúc thư mục
 
 ```
 ├── backend/
@@ -93,7 +93,7 @@ npm run dev
 └── .gitignore
 ```
 
-## 🔄 Luồng xử lý
+## Luồng xử lý
 
 1. DSLR xuất ảnh → thư mục `WATCH_DIR`
 2. Booth Agent phát hiện → nhóm ảnh vào session (cửa sổ 10s)
